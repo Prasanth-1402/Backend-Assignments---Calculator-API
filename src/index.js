@@ -68,7 +68,7 @@ app.post('/sub', (req, res) => {
   } else {
     res.status(200).send({
       status: 'success',
-      message: 'The difference of given two numbers',
+      message: 'the difference of given two numbers',
       result: firstNum - secondNum,
     });
   }
