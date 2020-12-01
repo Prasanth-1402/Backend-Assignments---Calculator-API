@@ -28,13 +28,13 @@ app.post('/add', (req, res) => {
     });
   }
   //   console.log(firstNum + ' ' + secondNum );
-  else if (firstNum < minLimit || secondNum < minLimit) {
-    res.send({
+  if (firstNum < minLimit || secondNum < minLimit) {
+    res.status(404).send({
       status: 'error',
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
-    res.send({
+    res.status(404).send({
       status: 'error',
       message: 'Overflow',
     });
@@ -55,13 +55,14 @@ app.post('/sub', (req, res) => {
       status: 'error',
       message: 'Invalid data types',
     });
-  } else if (firstNum < minLimit || secondNum < minLimit) {
+  }
+  if (firstNum < minLimit || secondNum < minLimit) {
     res.send({
       status: 'error',
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
-    res.send({
+    res.status(404).send({
       status: 'error',
       message: 'Overflow',
     });
@@ -82,10 +83,16 @@ app.post('/multiply', (req, res) => {
       status: 'error',
       message: 'Invalid data types',
     });
-  } else if (firstNum > maxLimit || secondNum > maxLimit) {
-    res.send({
+  }
+  if (firstNum > maxLimit || secondNum > maxLimit) {
+    res.status(404).send({
       status: 'error',
       message: 'Overflow',
+    });
+  } else if (firstNum < minLimit || secondNum < minLimit) {
+    res.send({
+      status: 'error',
+      message: 'Underflow',
     });
   } else {
     res.send({
@@ -110,13 +117,14 @@ app.post('/divide', (req, res) => {
       status: 'error',
       message: 'Invalid data types',
     });
-  } else if (firstNum < minLimit || secondNum < minLimit) {
-    res.send({
+  }
+  if (firstNum < minLimit || secondNum < minLimit) {
+    res.status(404).send({
       status: 'error',
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
-    res.send({
+    res.status(404).send({
       status: 'error',
       message: 'Overflow',
     });
