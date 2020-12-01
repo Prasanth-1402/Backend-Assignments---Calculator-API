@@ -23,18 +23,19 @@ app.post('/add', (req, res) => {
   const secondNum = req.body.num2;
   if (typeof firstNum == 'string' || typeof secondNum == 'string') {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
+      message: 'invalid data types',
     });
   }
   //   console.log(firstNum + ' ' + secondNum );
   else if (firstNum < minLimit || secondNum < minLimit) {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
       message: 'Overflow',
     });
   } else {
@@ -51,22 +52,21 @@ app.post('/sub', (req, res) => {
   const secondNum = req.body.num2;
   if (typeof firstNum == 'string' || typeof secondNum == 'string') {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
+      message: 'invalid data types',
     });
   } else if (firstNum < minLimit || secondNum < minLimit) {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
     console.log('MAXI MAXXXXX');
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
       message: 'Overflow',
     });
   } else {
-    res.set('status', 'success');
-    res.set('result', firstNum / secondNum);
     res.status(200).send({
       status: 'success',
       message: 'The difference of given two numbers',
@@ -80,16 +80,17 @@ app.post('/multiply', (req, res) => {
   const secondNum = req.body.num2;
   if (typeof firstNum == 'string' || typeof secondNum == 'string') {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
+      message: 'invalid data types',
     });
   } else if (firstNum < minLimit || secondNum < minLimit) {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
       message: 'Overflow',
     });
   } else {
@@ -107,26 +108,25 @@ app.post('/divide', (req, res) => {
   console.log(typeof firstNum + ' ' + typeof secondNum);
   if (typeof firstNum == 'string' || typeof secondNum == 'string') {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
+      message: 'invalid data types',
     });
   } else if (secondNum === 0) {
     res.status(404).send({
       status: 'error',
-      message: 'Cannot divide by Zero',
+      message: 'Cannot divide by zero',
     });
   } else if (firstNum < minLimit || secondNum < minLimit) {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
     res.status(404).send({
-      status: 'failure',
+      status: 'error',
       message: 'Overflow',
     });
   } else {
-    res.set('status', 'success');
-    res.set('result', firstNum / secondNum);
     res.status(200).send({
       status: 'success',
       message: 'The division of given numbers',
