@@ -82,11 +82,6 @@ app.post('/multiply', (req, res) => {
       status: 'error',
       message: 'Invalid data types',
     });
-  } else if (firstNum < minLimit || secondNum < minLimit) {
-    res.status(404).send({
-      status: 'error',
-      message: 'Underflow',
-    });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
     res.status(404).send({
       status: 'error',
@@ -105,15 +100,15 @@ app.post('/divide', (req, res) => {
   const firstNum = req.body.num1;
   const secondNum = req.body.num2;
   console.log(typeof firstNum + ' ' + typeof secondNum);
-  if (typeof firstNum == 'string' || typeof secondNum == 'string') {
+  if (secondNum === 0) {
+    res.send({
+      status: 'error',
+      message: 'Cannot divide by zero',
+    });
+  } else if (typeof firstNum == 'string' || typeof secondNum == 'string') {
     res.status(404).send({
       status: 'error',
       message: 'Invalid data types',
-    });
-  } else if (secondNum === 0) {
-    res.status(404).send({
-      status: 'error',
-      message: 'Cannot divide by zero',
     });
   } else if (firstNum < minLimit || secondNum < minLimit) {
     res.status(404).send({
