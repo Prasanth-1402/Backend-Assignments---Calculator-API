@@ -61,7 +61,6 @@ app.post('/sub', (req, res) => {
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
-    console.log('MAXI MAXXXXX');
     res.status(404).send({
       status: 'error',
       message: 'Overflow',
