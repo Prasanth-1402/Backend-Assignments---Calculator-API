@@ -24,7 +24,7 @@ app.post('/add', (req, res) => {
   if (typeof firstNum == 'string' || typeof secondNum == 'string') {
     res.status(404).send({
       status: 'error',
-      message: 'invalid data types',
+      message: 'Invalid data types',
     });
   }
   //   console.log(firstNum + ' ' + secondNum );
@@ -53,7 +53,7 @@ app.post('/sub', (req, res) => {
   if (typeof firstNum == 'string' || typeof secondNum == 'string') {
     res.status(404).send({
       status: 'error',
-      message: 'invalid data types',
+      message: 'Invalid data types',
     });
   } else if (firstNum < minLimit || secondNum < minLimit) {
     res.status(404).send({
@@ -80,7 +80,7 @@ app.post('/multiply', (req, res) => {
   if (typeof firstNum == 'string' || typeof secondNum == 'string') {
     res.status(404).send({
       status: 'error',
-      message: 'invalid data types',
+      message: 'Invalid data types',
     });
   } else if (firstNum < minLimit || secondNum < minLimit) {
     res.status(404).send({
@@ -108,7 +108,7 @@ app.post('/divide', (req, res) => {
   if (typeof firstNum == 'string' || typeof secondNum == 'string') {
     res.status(404).send({
       status: 'error',
-      message: 'invalid data types',
+      message: 'Invalid data types',
     });
   } else if (secondNum === 0) {
     res.status(404).send({
