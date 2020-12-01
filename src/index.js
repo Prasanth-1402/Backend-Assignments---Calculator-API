@@ -21,18 +21,29 @@ app.get('/', (req, res) => {
 app.post('/add', (req, res) => {
   const firstNum = req.body.num1;
   const secondNum = req.body.num2;
+  if (typeof firstNum == 'string' || typeof secondNum == 'string') {
+    res.status(404).send({
+      status: 'failure',
+    });
+  }
   //   console.log(firstNum + ' ' + secondNum );
-  res.send({
-    status: 'success',
-    message: 'the sum of given two numbers',
-    sum: firstNum + secondNum,
-  });
+  else {
+    res.send({
+      status: 'success',
+      message: 'the sum of given two numbers',
+      sum: firstNum + secondNum,
+    });
+  }
 });
 
 app.post('/sub', (req, res) => {
   const firstNum = req.body.num1;
   const secondNum = req.body.num2;
-  if (firstNum < minLimit || secondNum < minLimit) {
+  if (typeof firstNum == 'string' || typeof secondNum == 'string') {
+    res.status(404).send({
+      status: 'failure',
+    });
+  } else if (firstNum < minLimit || secondNum < minLimit) {
     res.status(404).send({
       status: 'failure',
       message: 'Underflow',
@@ -57,8 +68,11 @@ app.post('/sub', (req, res) => {
 app.post('/multiply', (req, res) => {
   const firstNum = req.body.num1;
   const secondNum = req.body.num2;
-
-  if (firstNum < minLimit || secondNum < minLimit) {
+  if (typeof firstNum == 'string' || typeof secondNum == 'string') {
+    res.status(404).send({
+      status: 'failure',
+    });
+  } else if (firstNum < minLimit || secondNum < minLimit) {
     res.status(404).send({
       status: 'failure',
       message: 'Underflow',
@@ -80,8 +94,12 @@ app.post('/multiply', (req, res) => {
 app.post('/divide', (req, res) => {
   const firstNum = req.body.num1;
   const secondNum = req.body.num2;
-  console.log(firstNum + ' ' + secondNum);
-  if (secondNum === 0) {
+  console.log(typeof firstNum + ' ' + typeof secondNum);
+  if (typeof firstNum == 'string' || typeof secondNum == 'string') {
+    res.status(404).send({
+      status: 'failure',
+    });
+  } else if (secondNum === 0) {
     res.status(404).send({
       status: 'error',
       message: 'Cannot divide by Zero',
