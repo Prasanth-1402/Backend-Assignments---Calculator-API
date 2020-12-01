@@ -29,12 +29,17 @@ app.post('/add', (req, res) => {
   }
   //   console.log(firstNum + ' ' + secondNum );
   if (firstNum < minLimit || secondNum < minLimit) {
-    res.status(404).send({
+    res.send({
       status: 'error',
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
-    res.status(404).send({
+    res.send({
+      status: 'error',
+      message: 'Overflow',
+    });
+  } else if (firstNum + secondNum > maxLimit) {
+    res.send({
       status: 'error',
       message: 'Overflow',
     });
@@ -62,7 +67,7 @@ app.post('/sub', (req, res) => {
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
-    res.status(404).send({
+    res.send({
       status: 'error',
       message: 'Overflow',
     });
@@ -85,7 +90,7 @@ app.post('/multiply', (req, res) => {
     });
   }
   if (firstNum > maxLimit || secondNum > maxLimit) {
-    res.status(404).send({
+    res.send({
       status: 'error',
       message: 'Overflow',
     });
@@ -93,6 +98,11 @@ app.post('/multiply', (req, res) => {
     res.send({
       status: 'error',
       message: 'Underflow',
+    });
+  } else if (firstNum * secondNum > maxLimit) {
+    res.send({
+      status: 'error',
+      message: 'Overflow',
     });
   } else {
     res.send({
@@ -119,12 +129,12 @@ app.post('/divide', (req, res) => {
     });
   }
   if (firstNum < minLimit || secondNum < minLimit) {
-    res.status(404).send({
+    res.send({
       status: 'error',
       message: 'Underflow',
     });
   } else if (firstNum > maxLimit || secondNum > maxLimit) {
-    res.status(404).send({
+    res.send({
       status: 'error',
       message: 'Overflow',
     });
