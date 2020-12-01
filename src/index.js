@@ -27,7 +27,17 @@ app.post('/add', (req, res) => {
     });
   }
   //   console.log(firstNum + ' ' + secondNum );
-  else {
+  else if (firstNum < minLimit || secondNum < minLimit) {
+    res.status(404).send({
+      status: 'failure',
+      message: 'Underflow',
+    });
+  } else if (firstNum > maxLimit || secondNum > maxLimit) {
+    res.status(404).send({
+      status: 'failure',
+      message: 'Overflow',
+    });
+  } else {
     res.send({
       status: 'success',
       message: 'the sum of given two numbers',
